@@ -1,0 +1,57 @@
+{
+  "assets": [
+    {
+      "id": "DC-PRIMARY-01",
+      "hostname": "dc01.corp.internal",
+      "ip": "10.0.0.10",
+      "type": "DomainController",
+      "tier": "Tier-0",
+      "criticality": "Critical",
+      "services": ["ActiveDirectory", "DNS", "Kerberos"],
+      "dependent_workstations": 1450,
+      "estimated_downtime_loss_per_min": 25000,
+      "allowed_actions": ["alert_only", "require_hitl"]
+    },
+    {
+      "id": "PAYMENT-API-01",
+      "hostname": "pay-api01.corp.internal",
+      "ip": "10.0.1.50",
+      "type": "ProductionGateway",
+      "tier": "Tier-1",
+      "criticality": "High",
+      "services": ["StripeProxy", "PCI-Ingress"],
+      "dependent_workstations": 0,
+      "estimated_downtime_loss_per_min": 15000,
+      "allowed_actions": ["traffic_throttle", "require_hitl"]
+    },
+    {
+      "id": "DEV-WRK-882",
+      "hostname": "wkstn-882.corp.internal",
+      "ip": "10.0.50.82",
+      "type": "Workstation",
+      "tier": "Tier-3",
+      "criticality": "Low",
+      "services": ["VSCode", "Docker"],
+      "dependent_workstations": 0,
+      "estimated_downtime_loss_per_min": 20,
+      "allowed_actions": ["isolate_host", "revoke_session", "kill_process"]
+    },
+    {
+      "id": "HR-WRK-104",
+      "hostname": "wkstn-hr104.corp.internal",
+      "ip": "10.0.50.104",
+      "type": "Workstation",
+      "tier": "Tier-3",
+      "criticality": "Low",
+      "services": ["WorkdayClient", "Outlook"],
+      "dependent_workstations": 0,
+      "estimated_downtime_loss_per_min": 10,
+      "allowed_actions": ["isolate_host", "revoke_session", "kill_process"]
+    }
+  ],
+  "topology_edges": [
+    {"source": "DEV-WRK-882", "target": "DC-PRIMARY-01", "protocol": "LDAP/Kerberos"},
+    {"source": "HR-WRK-104", "target": "DC-PRIMARY-01", "protocol": "LDAP/Kerberos"},
+    {"source": "PAYMENT-API-01", "target": "DC-PRIMARY-01", "protocol": "Kerberos"}
+  ]
+}

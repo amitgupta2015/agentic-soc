@@ -1,0 +1,23 @@
+[
+  {
+    "id": "HUNT-001",
+    "target_engine": "Microsoft KQL",
+    "prompt": "Find all DeviceProcessEvents in the last 24 hours where the initiating process was WINWORD.EXE or EXCEL.EXE and spawned powershell.exe or cmd.exe, projecting Timestamp, DeviceName, AccountName, ProcessCommandLine, and group by DeviceName.",
+    "expected_tables": ["DeviceProcessEvents"],
+    "required_operators": ["where", "in~", "project", "summarize"]
+  },
+  {
+    "id": "HUNT-002",
+    "target_engine": "Splunk SPL",
+    "prompt": "Search index=windows EventCode=4624 Logon_Type=3 in the last 12 hours where user is not SYSTEM, calculate count of distinct source workstations by Account_Name, and filter where count is greater than 5.",
+    "expected_tables": ["index=windows"],
+    "required_operators": ["search", "EventCode=4624", "stats dc(Source_Workstation)", "by Account_Name", "where"]
+  },
+  {
+    "id": "HUNT-003",
+    "target_engine": "Sigma Rule",
+    "prompt": "Write a Sigma detection rule in YAML format titled 'PsExec Remote Execution Tool' targeting Windows Security event id 7045 or Sysmon event id 1 where ServiceName is PSEXESVC or Image ends with psexesvc.exe, with status experimental and level high.",
+    "expected_tables": ["detection", "selection"],
+    "required_operators": ["title:", "logsource:", "detection:", "condition:"]
+  }
+]

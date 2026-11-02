@@ -1,0 +1,44 @@
+[
+  {
+    "alert_id": "ALERT-BENIGN-001",
+    "timestamp": "2026-11-02T03:15:00Z",
+    "event_type": "ProcessCreation",
+    "severity": "HIGH",
+    "asset_id": "DEV-WRK-882",
+    "source_ip": "10.0.50.82",
+    "user": "CORP\\svc_sccm_patch",
+    "parent_process": "C:\\Windows\\CCM\\CcmExec.exe",
+    "process_name": "powershell.exe",
+    "command_line": "powershell.exe -NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand SQBuAHYAbwBrAGUALQBXAG0AaQBNAGUAdABoAG8AZAAgAC0AQwBsAGEAcwBzACAAVwBpAG4AMwAyAF8AUAByAG8AYwBlAHMAcwA=",
+    "decoded_command": "Invoke-WmiMethod -Class Win32_Process -Name Create -ArgumentList 'C:\\Windows\\Temp\\KB504821.exe /quiet'",
+    "sha256": "3fa98e098a72e8112bcda4482109283182390823091823091823091823091823",
+    "matched_rule": "Suspicious Encoded PowerShell Execution (T1059.001)",
+    "context": {
+      "change_ticket_id": "CHG-99214-PATCH-TUESDAY",
+      "digital_signature": "Microsoft Corporation (Verified)",
+      "parent_is_trusted_service": true
+    },
+    "ground_truth": "BENIGN"
+  },
+  {
+    "alert_id": "ALERT-BENIGN-002",
+    "timestamp": "2026-11-02T04:20:10Z",
+    "event_type": "RemoteServiceCreation",
+    "severity": "CRITICAL",
+    "asset_id": "DC-PRIMARY-01",
+    "source_ip": "10.0.10.5",
+    "user": "CORP\\ad_admin_sarah",
+    "parent_process": "services.exe",
+    "process_name": "PSEXESVC.exe",
+    "command_line": "PSEXESVC.exe",
+    "sha256": "9b12e8092384a821948124098124091824091824091824091824091824091824",
+    "matched_rule": "Remote Service Creation via PsExec (T1543.003)",
+    "context": {
+      "change_ticket_id": "CHG-99218-EMERGENCY-DNS-FIX",
+      "digital_signature": "Sysinternals - Microsoft (Verified)",
+      "parent_is_trusted_service": true,
+      "admin_shift_active": true
+    },
+    "ground_truth": "BENIGN"
+  }
+]
