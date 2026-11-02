@@ -200,9 +200,14 @@ python run_all_benchmarks.py
 
 ---
 
-## 📚 Comprehensive Documentation
-For the complete 10,000-word survey covering commercial platforms (Dropzone AI, Torq Socrates, Prophet Security, Intezer), direct video demos, and academic literature analysis, see:
-👉 [**`AGENTIC_SOC_COMPREHENSIVE_RESEARCH_AND_TESTBED.md`**](AGENTIC_SOC_COMPREHENSIVE_RESEARCH_AND_TESTBED.md)
+## 📚 Comprehensive Documentation & Academic Deep Dives
+* 📑 [**`docs/papers/` — Standalone Plain-English Guides for All 5 Academic Papers**](docs/papers/README.md)
+  * [Paper 1: AgentSOC (Counterfactual Reasoning & Blast-Radius Simulation)](docs/papers/01_agentsoc_counterfactual_reasoning.md)
+  * [Paper 2: Autonomous SOC (Syntax-Constrained Query Modeling - SQM)](docs/papers/02_autonomous_soc_sqm_query_generation.md)
+  * [Paper 3: LanG (Governance & The "Rule of Zero")](docs/papers/03_lang_governance_and_rule_of_zero.md)
+  * [Paper 4: AgenticCyOps (Indirect Prompt Injection Defense via OCSF)](docs/papers/04_agenticcyops_telemetry_prompt_injection.md)
+  * [Paper 5: The Grand Survey & The 6 Levels of SOC Autonomy](docs/papers/05_soc_llm_survey_and_autonomy_levels.md)
+* 📖 [**`AGENTIC_SOC_COMPREHENSIVE_RESEARCH_AND_TESTBED.md`**](AGENTIC_SOC_COMPREHENSIVE_RESEARCH_AND_TESTBED.md): Full survey covering commercial platforms (Dropzone AI, Torq Socrates, Prophet Security, Intezer), direct video demos, and complete codebase architecture.
 
 ---
 
